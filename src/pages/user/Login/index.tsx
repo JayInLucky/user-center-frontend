@@ -34,13 +34,14 @@ const Login: React.FC = () => {
   const handleSubmit = async (values: API.LoginParams) => {
     try {
       // 登录
-      const user = await login({...values, type,});
+      const user = await login({...values, type});
 
       if (user) {
         const defaultLoginSuccessMessage = '登录成功！';
         message.success(defaultLoginSuccessMessage);
         await fetchUserInfo();
         /** 此方法会跳转到 redirect 参数所在的位置 */
+
         if (!history) return;
         const { query } = history.location;
         const { redirect } = query as {

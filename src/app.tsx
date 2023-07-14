@@ -3,12 +3,12 @@ import RightContent from '@/components/RightContent';
 import {BookOutlined, LinkOutlined} from '@ant-design/icons';
 import type {Settings as LayoutSettings} from '@ant-design/pro-components';
 import {PageLoading, SettingDrawer} from '@ant-design/pro-components';
-
 import {history, Link} from 'umi';
 import defaultSettings from '../config/defaultSettings';
 import {currentUser as queryCurrentUser} from './services/ant-design-pro/api';
 import {RunTimeLayoutConfig} from "@@/plugin-layout/layoutExports";
 import {RequestConfig} from "@@/plugin-request/request";
+
 
 const isDev = process.env.NODE_ENV === 'development';
 const loginPath = '/user/login';
@@ -33,6 +33,7 @@ export async function getInitialState(): Promise<{
   loading?: boolean;
   fetchUserInfo?: () => Promise<API.CurrentUser | undefined>;
 }> {
+  // alert(process.env.NODE_ENV)
   const fetchUserInfo = async () => {
     try {
       return await queryCurrentUser();
